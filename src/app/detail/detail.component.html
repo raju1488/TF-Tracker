@@ -1,0 +1,46 @@
+<h2>Details View of TF {{tfdetailss?.TFNo}}</h2>
+<h3>{{tfdetailss?. ScrumTeamName}}   </h3>
+<table class="table">
+  <thead>
+    <tr class="header">
+      <th>QC ID</th>
+      <th>CS ID</th>
+      <th>Task ID</th>
+      <th>Delivery date</th>
+      <th>CM synergy file path</th>
+      <th>SP Changes (Y/N)</th>
+      <th>Config Changes (Y/N)</th>
+      <th>Common files impact (Y/N) </th>
+      <th>ASPX file to be delivered (Y/N)</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+      <tr class="rows">
+      <td *ngIf="tfdetailss?.QCID">{{tfdetailss?.QCID}}</td>
+      <td *ngIf="tfdetailss?.CSID">{{tfdetailss?.CSID}}</td>
+      <td *ngIf="tfdetailss?.TaskIds">{{tfdetailss?.TaskIds}}</td>
+      <td *ngIf="tfdetailss?.DeliveryDate">{{tfdetailss?.DeliveryDate}}</td>
+      <td *ngIf="tfdetailss?.CMSynergyFilePath">{{tfdetailss?.CMSynergyFilePath}}</td>
+      <td *ngIf="tfdetailss?.SPChange">{{tfdetailss?.SPChange==1 ? 'Yes':'No'}}</td>
+      <td *ngIf="tfdetailss?.ConfigChange">{{tfdetailss?.ConfigChange==1 ? 'Yes':'No'}}</td>
+      <td *ngIf="tfdetailss?.CommonFilesImpact">{{tfdetailss?.CommonFilesImpact==1 ? 'Yes':'No'}}</td>
+      <td *ngIf="tfdetailss?.ASPXDelivered">{{tfdetailss?.ASPXDelivered==1 ? 'Yes':'No'}}</td>
+      
+</tr>
+<tr>&nbsp;</tr>
+<tr>
+  
+  <td *ngIf="tfdetailss?.QCID" style="border:none;" align="right" colspan="9">
+      <button type="button" class="btn btn-primary btn-lg" style="background-color:black" (click)="editTF(tfdetailss?.QCID)" >
+          <i class="glyphicon glyphicon-pencil"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg" style="background-color:black" (click)="deleteTF(tfdetailss?.QCID)" >
+            <i class="glyphicon glyphicon-trash"></i>
+          </button>
+  </td>
+    
+</tr>
+  </tbody>
+</table>
+<br>

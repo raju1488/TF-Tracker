@@ -1,0 +1,51 @@
+
+<form class="form-inline" action="/action_page.php">
+  <div class="form-group">
+      <label for="build">Build Version</label>
+      <select class="form-control" [ngModel]="(builds$ |async)" (ngModelChange)="onChange($event)" name="something">
+          <option *ngFor="let build of (builds$ |async)">
+              {{ build }}
+          </option>
+        </select>
+  </div>
+  <div class="form-group">
+      <label for="Search">Search</label>
+      <input #gb type="text" pInputText size="50" style="height:35px;" placeholder="Search Here...">
+  </div>
+  <div class="form-group" style="float:right">
+      <button type="button" class="button" data-target="#myModal" [routerLink]="['/create']">
+          <span class="glyphicon glyphicon-plus"></span>New TF Request</button>
+  </div>
+  <h1>{{totalcount}}</h1>
+</form>
+
+
+  
+
+<p-dataTable [value]="items"  [rows]="10" [tableStyle]="{'table-layout':'auto'}" [globalFilter]="gb" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+    <p-column field="QCID" header="QC ID">
+        <ng-template let-row="rowData" pTemplate type="body">
+            <div class="my-center-text">
+              <a style="color: #337ab7 ;" [routerLink]="['/details']" [queryParams]="{qcid: row.QCID}">{{row.QCID}}</a>
+            </div>
+    </ng-template>
+    </p-column>
+  <p-column field="Title" [style]="{'word-wrap':'break-word'}" header="Title"></p-column>
+  <p-column field="CSID" header="CS ID"></p-column>
+  <p-column field="TFNo" header="TF No."></p-column>
+  <p-column field="TFOnBuild" header="Build Version"></p-column>
+  <p-column  header="" >
+  <ng-template let-i="rowIndex" let-row="rowData" let-col pTemplate="body">
+  <button type="button" class="btn btn-primary btn-xs" style="background-color:black" (click)="editTF(row)" >
+            <i class="glyphicon glyphicon-pencil"></i>
+          </button>
+          <button type="button" class="btn btn-primary btn-xs" style="background-color:black" (click)="deleteTF(row)" >
+            <i class="glyphicon glyphicon-trash"></i>
+          </button>
+          </ng-template>
+  </p-column>
+  <ng-template pTemplate="paginatorLeft">
+  </ng-template>
+  <ng-template pTemplate="paginatorRight">
+  </ng-template>
+</p-dataTable>

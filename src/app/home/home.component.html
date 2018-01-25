@@ -1,0 +1,14 @@
+
+
+<form class="form-inline" action="/action_page.php">
+    <div class="form-group">
+        <label for="build">Build Version</label>
+        <select class="form-control" [ngModel]="(builds$)" (ngModelChange)="onChange($event)" name="something">
+            <option *ngFor="let build of (builds$)">
+                {{ build }}
+            </option>
+          </select>
+    </div>
+    
+</form>
+<p-chart type="doughnut" [data]="data" [options]="options" ></p-chart>

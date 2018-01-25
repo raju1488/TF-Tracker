@@ -1,0 +1,144 @@
+<form #createForm="ngForm" (ngSubmit)="SaveCreateForm(createForm)">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2 class="panel-title"> {{FormLblName}}</h2>
+  </div>
+
+  <div class="panel-body">   
+    <br>
+      <div class="form-group">
+        <label for="TFNo" class="control-label col-sm-4">TF No:</label>          
+        <div class="col-sm-5" > 
+            <input required [(ngModel)]="TFNo" id="TFNo" name="TFNo">   
+         <!--  <div class="alert alert-danger" *ngIf="!TFNo.valid">TF No. is Required</div>-->
+       </div>  
+       </div>
+      
+        <br>
+        <div class="form-group">
+            <label for="Scrum" class="control-label col-sm-4">Scrum Team:</label>
+            <div class="col-sm-4">
+            <select required [(ngModel)]="SCRUM" id="Scrum" name="Scrum"  >
+                <option *ngFor="let Scrum of (Scrums$)"  [ngValue]="Scrum">{{ Scrum }}</option>
+              </select>
+            </div>
+            </div>
+            <br>
+       <br>
+
+       <div class="form-group">
+        <label for="build" class="control-label col-sm-4">Build Version:</label>
+        <div class="col-sm-5">
+        <select [(ngModel)]="BUILD" required  name="build" id="build">
+            <option *ngFor="let build of (builds$)" [ngValue]="build">
+                {{ build }}
+            </option>
+          </select>
+        </div>
+        </div>
+        <br>
+       <div class="form-group">
+            <label for="QCID" class="control-label col-sm-4">QC ID:</label>          
+            <div class="col-sm-5">  
+                <input [(ngModel)]="QCIDNo" required id="QCID" name="qcid">
+            </div>
+           </div>  
+        <br>
+
+        <div class="form-group">
+                <label for="CSID" class="control-label col-sm-4">CS ID:</label>          
+                <div class="col-sm-5">  
+                    <input [(ngModel)]="CSID" required id="CSID" name="csid">
+                </div>
+        </div>  
+         <br>
+         <div class="form-group">
+            <label for="Title" class="control-label col-sm-4">Title:</label>          
+            <div class="col-sm-5">  
+                <input ngModel required id="Title" name="Title" #Title="ngModel">
+            </div>
+        </div>
+        <br>
+
+        <div class="form-group">
+                <label for="TaskIDs" class="control-label col-sm-4">Task Id's:</label>          
+                <div class="col-sm-5">  
+                    <input [(ngModel)]="TASKIDS" required id="TaskIDs" name="taskids">
+                </div>
+        </div>  
+        <br>
+
+        <div class="form-group">
+                <label for="SynergyPath" class="control-label col-sm-4">Synergy File Path:</label>          
+                <div class="col-sm-5">  
+                    <input  [(ngModel)]="SYNERGYPATH" required id="SynergyPath" name="synergypath">
+                </div>
+        </div>  
+        <br>
+
+        <div class="form-group">
+                <label for="Spchanges" class="control-label col-sm-4">Sp Changes Y/N:</label>
+                   <div class="col-sm-5">
+                   <select [(ngModel)]="SPCHANGE" required id="Spchanges" name="spchanges">
+                        <option *ngFor="let item of (YesNo)" [ngValue]="item">
+                                {{ item }}
+                            </option>
+                   </select>
+        </div>
+
+        </div>
+        <br>
+
+        <div class="form-group">
+                <label for="Configchanges" class="control-label col-sm-4">Config Changes Y/N:</label>
+                   <div class="col-sm-5">
+                   <select [(ngModel)]="CONFIGCHANGE" required id="Configchanges" name="Configchanges">
+                        <option *ngFor="let item of (YesNo)" [ngValue]="item">
+                                {{ item }}
+                            </option>
+                   </select>
+                    </div>
+        </div>
+        <br>
+
+        <div class="form-group">
+                <label for="FileImpact" class="control-label col-sm-4">Common Files Impact:</label>
+                   <div class="col-sm-5">
+                   <select [(ngModel)]="COMMONIMPACT" required id="FileImpact" name="FileImpact">
+                        <option *ngFor="let item of (YesNo)" [ngValue]="item">
+                                {{ item }}
+                            </option>
+                   </select>
+                    </div>
+        </div>
+        <br>
+
+        <div class="form-group">
+                <label for="ASPXDeli" class="control-label col-sm-4">ASPX Delivered?:</label>
+                   <div class="col-sm-5">
+                   <select [(ngModel)]="ASPXDELIVERED" required id="ASPXDeli" name="ASPXDeli">
+                        <option *ngFor="let item of (YesNo)" [ngValue]="item">
+                                {{ item }}
+                            </option>
+                   </select>
+                    </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="DelDate" class="control-label col-sm-4">Delivery Date:</label>
+            <!--<div class="col-sm-5">
+            <p-calendar [(ngModel)]="date1"></p-calendar> {{date1|date}}
+            </div>-->
+            <div class="col-sm-5">
+                <input [ngModel] ="dateval | date:'dd-MM-yyyy'" id="DelDate" type="date" name="deldate"  ></div>
+            
+        </div>
+    </div>
+
+  <div class="panel-footer">
+      <button type="submit" class="btn btn-primary"[disabled]="!createForm.form.valid && !createForm.form.touched" >{{FormBtnName}}</button>
+      <button type="submit" class="btn btn-primary" [routerLink]="['/tftracker']">Cancel</button>
+  </div>
+
+</div>
+</form>
